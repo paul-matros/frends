@@ -23,6 +23,10 @@ const paths = {
         src: 'src/index.html',
         dest: 'dist'
     },
+    css: {
+        src: 'src/css/style.css',
+        dest: 'dist/css'
+    },
     vendor: {
         src: [
             'node_modules/jquery/dist/jquery.min.js',
@@ -85,6 +89,12 @@ function copyHtml() {
         .pipe(browserSync.stream());
 }
 
+function copyCss() {
+    return gulp.src(paths.css.src)
+        .pipe(gulp.dest(paths.css.dest))
+        .pipe(browserSync.stream());
+}
+
 // Copy vendor files
 function copyVendor() {
     return gulp.src(paths.vendor.src)
@@ -103,12 +113,13 @@ function watch() {
     gulp.watch(paths.coffee.src, processCoffee);
     gulp.watch(paths.templates.src, processTemplates);
     gulp.watch(paths.html.src, copyHtml);
+    gulp.watch(paths.html.src, copyCss);
 }
 
 // Define build tasks
 const build = gulp.series(
     clean,
-    gulp.parallel(processCoffee, processTemplates, copyHtml, copyVendor)
+    gulp.parallel(processCoffee, processTemplates, copyHtml, copyCss, copyVendor)
 );
 
 // Export tasks
