@@ -7,6 +7,8 @@ const fs = require('fs');  // Node's built-in file system module
 const handlebars = require('gulp-handlebars');
 const rename = require('gulp-rename');
 const browserSync = require('browser-sync').create();
+const wrap = require('gulp-wrap');
+const declare = require('gulp-declare');
 
 // Define file paths
 const paths = {
@@ -64,8 +66,11 @@ function processCoffee() {
 // Process Handlebars templates
 function processTemplates() {
     return gulp.src(paths.templates.src)
-        .pipe(handlebars({
-            handlebars: require('handlebars')
+        .pipe(handlebars())
+        .pipe(wrap('Handlebars.template(<%= contents %>)'))
+        .pipe(declare({
+            namespace: 'Handlebars.templates',
+            noRedeclare: true // Avoid duplicate declarations
         }))
         .pipe(rename({
             extname: '.js'
