@@ -19,7 +19,6 @@
     "browser-sync": "^3.0.3",
     "browserify": "^17.0.1",
     "coffeeify": "^3.0.1",
-    "del": "^8.0.0",
     "gulp": "^4.0.2",
     "gulp-coffee": "^3.0.3",
     "gulp-concat": "^2.6.1",
