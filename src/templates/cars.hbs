@@ -1,6 +1,8 @@
 <div class="cars-container">
     <h2>{{name}} has {{carCount}} cars:</h2>
     <ul class="car-list">
-        <li>{{name}} {{model}}</li>
+        {{#each cars}}
+            <li>{{this.name}} {{this.model}}</li>
+        {{/each}}
     </ul>
 </div>
