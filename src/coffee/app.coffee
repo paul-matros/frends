@@ -10,10 +10,9 @@ class App
   initialize: ->
     console.log 'Application initialized'
 
-    # Create a new collection for cars
-    @carsCollection = new CarsCollection()
+    @initializeEventListeners()
 
-    # Bind the click event to the button
+  initializeEventListeners: ->
     $('#get-cars').on 'click', @fetchCars
 
 # Method to fetch cars from the REST service
@@ -26,10 +25,8 @@ class App
       method: 'GET'
       dataType: 'json'
       success: (data) =>
-# Update the collection with the fetched data
-        @carsCollection.reset(data.cars)
 
-        # Render the view with the data
+# Render the view with the data
         @renderCars(data)
       error: (xhr, status, error) =>
         console.error 'Error fetching cars:', error
