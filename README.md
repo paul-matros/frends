@@ -5,8 +5,9 @@ This is a simple client application that connects to a REST service to display a
 ## My Commentary
 
 Although I specialize in backend Java development with some experience in Angular and Vue.js I had a great time working
-on this
-task and enjoyed exploring different technologies.
+on this task and enjoyed exploring different technologies.
+
+Please note this was my first encounter with this technology stack.
 
 If I had more time:
 
